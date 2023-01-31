@@ -1,4 +1,5 @@
 FROM node:19
 
-COPY ./src /src/
-WORKDIR /src
+COPY ./app /app/
+WORKDIR /app
+RUN npm install
