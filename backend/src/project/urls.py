@@ -23,8 +23,14 @@ urlpatterns = [
 
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/app/', include('app.urls')),
+    #path('api/app/', include('app.urls')),
+    path('api/app/', TokenObtainPairView.as_view(), name='app_obtain_pair'),
+    path('api/app/refresh/', TokenRefreshView.as_view(), name='app_refresh'),
 ]

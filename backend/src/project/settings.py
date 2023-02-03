@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+import datetime 
 user = os.getenv('MYSQL_USER')
 name = os.getenv('MYSQL_DATABASE')
 password = os.getenv('MYSQL_PASSWORD')
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'app.apps.AppConfig',  # 追加
     'rest_framework',  # 追加
     'rest_framework_api_key',  # 追加
+    'rest_framework_simplejwt'
 ]
 
 MIDDLEWARE = [
@@ -134,3 +136,20 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+
+    # JWT認証の追加
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',),
+    'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',),
+}
+
+time_acc = datetime.timedelta(minutes=15)
+time_ref = datetime.timedelta(days=30)
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': time_acc,
+    'REFRESH_TOKEN_LIFETIME': time_ref,
+    'ROTATE_REFRESH_TOKENS': True,
+    'UPDATE_LAST_LOGIN': True,
+}
