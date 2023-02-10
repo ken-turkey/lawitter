@@ -14,10 +14,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 import datetime 
-user = os.getenv('MYSQL_USER')
-name = os.getenv('MYSQL_DATABASE')
-password = os.getenv('MYSQL_PASSWORD')
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,9 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app.apps.AppConfig',  # 追加
-    'rest_framework',  # 追加
-    'rest_framework_api_key',  # 追加
+    'app.apps.AppConfig',
+    'users.apps.UsersConfig'
+    'rest_framework', 
+    'rest_framework_api_key',
     'rest_framework_simplejwt'
 ]
 
@@ -84,14 +81,15 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': name,
-        'USER': user,
+        'NAME': os.getenv('MYSQL_DATABASE'),
+        'USER': os.getenv('MYSQL_USER'),
         'HOST': 'db',
         'PORT': 3306,
-        'PASSWORD': password
+        'PASSWORD': os.getenv('MYSQL_PASSWORD')
     }
 }
 
