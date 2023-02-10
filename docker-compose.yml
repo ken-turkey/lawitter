@@ -8,6 +8,8 @@ services:
       - SYS_NICE  
     volumes:
       - ./db.mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
     env_file:
       - .env.development
   backend:
