@@ -107,4 +107,4 @@ db.*
 
 .DS_Store
 
-.env.development
+.env*
