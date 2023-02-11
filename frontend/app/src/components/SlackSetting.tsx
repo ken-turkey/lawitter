@@ -18,35 +18,34 @@ export const SlackSetting = memo(() => {
 
 const SlackInput = memo(() => {
     return (
-        <Stack
-            spacing={3}>
-            <Container>
-                <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+        <Stack>
+            <Box sx={{ m: 1 }}>
+                <FormControl fullWidth variant="standard">
                     <InputLabel htmlFor="slack-token">Slack Token</InputLabel>
                     <Input
                         id="slack-token"
                     />
                 </FormControl>
-            </Container>
-            <Container>
-                <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+            </Box>
+            <Box sx={{ m: 1 }}>
+                <FormControl fullWidth variant="standard">
                     <InputLabel htmlFor="slack-channel">Slack Channel</InputLabel>
                     <Input
                         id="slack-channel"
                     />
                 </FormControl>
-            </Container>
-            <Container><Box
-                m={1}
-                display="flex"
-                justifyContent="flex-end"
-                alignItems="flex-end"
-            >
-                <Button variant="contained">
-                    登録
-                </Button>
             </Box>
-            </Container>
+            <Box sx={{ m: 1 }}>
+                <Box
+                    display="flex"
+                    justifyContent="flex-end"
+                    alignItems="flex-end"
+                >
+                    <Button variant="contained">
+                        登録
+                    </Button>
+                </Box>
+            </Box>
         </Stack>
     );
 });

@@ -33,7 +33,9 @@ export const Home = memo(() => {
       >
         <Grid item xs>
           <Card>
-            <CardActionArea>
+            <CardActionArea
+              href='/wake-up-time'
+            >
               <CardContent>
                 <Typography variant='h4' component="div">
                   起床予定時間
@@ -47,7 +49,9 @@ export const Home = memo(() => {
         </Grid>
         <Grid item xs>
           <Card>
-            <CardActionArea>
+            <CardActionArea
+              href='/wake-up'
+            >
               <CardContent>
                 <Typography variant='h4' component="div">
                   起床記録
