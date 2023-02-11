@@ -25,40 +25,13 @@ app.add_middleware(
 )
 
 
-@app.post("/v1/startwindow/login", response_model=AccessToken,
-             name="users:login-email-and-password")
-async def user_login_with_username_and_password(
-    user_repo: UsersRepository = Depends(get_repository(UsersRepository)),
-    form_data: OAuth2PasswordRequestForm = Depends(OAuth2PasswordRequestForm),
-) -> AccessToken:
-    user = await user_repo.authenticate_user(
-        username=form_data.username, password=form_data.password
-    )
-    if not user:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Authentication was unsuccessful.",
-            headers={"WWW-Authenticate": "Bearer"},
-        )
-    access_token = AccessToken(
-        access_token=auth_service.create_access_token_for_user(
-            user=user), token_type="bearer")
-    return access_token
+@app.post("/v1/startwindow/login")
+
 
     
 @app.post("/v1/startwindow/create")
-def create(Request):
-    password = Request['password']
-    user = Request['user']
-    db.add()
+def create():
 
-@app.post("/todos/")
-async def create_todo(todo_in: TodoIn,  db: Session = Depends(get_db)):
-    todo = Todo(title=todo_in.title, done=False)
-    db.add(todo)
-    db.commit()
-    todo = get_todo(db, todo.id)
-    return todo
 
     
 
@@ -73,7 +46,7 @@ def set_time(Request):
         return {'status': True, 'wake_time': wake_time, 'late_text': late_text}
 
 
-@app.get("/v1/configwindow/{wake_time, late_text}")
+@app.get("/v1/configwindow/req_time")
 def req_time(wake_time, late_text):
     return {'status': True, 'wake_time': wake_time, 'late_text': late_text}
 
