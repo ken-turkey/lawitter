@@ -34,7 +34,7 @@ export const RegisterField = (() => {
             return;
         }
         const authStatus = await axios
-            .post<User>("http://localhost:8000/v1/startwindow/create", {
+            .post<User>("http://0.0.0.0:8081/v1/startwindow/create", {
                 user_id: userId,
                 password: password,
             })
