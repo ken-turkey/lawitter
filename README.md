@@ -227,3 +227,43 @@ home-->slack
 cd /code/src
 uvicorn main:app --reload --host 0.0.0.0 --port 8081
 ```
+
+## データベース
+
+### ER図
+
+```mermaid
+erDiagram
+
+users{
+  int id
+  string name
+  string password
+}
+
+wake_up_time{
+  int id
+  int user_id
+  string date
+  string wake_up_time
+  string late_text
+}
+
+slack{
+  int id
+  int user_id
+  string token
+  string channel
+}
+
+is_wake_up{
+  int id
+  int user_id
+  string date
+  bool is_wake_up
+}
+
+users ||--o{ wake_up_time : ""
+users ||--o| slack : ""
+users ||--o{ is_wake_up : ""
+```
