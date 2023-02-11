@@ -3,3 +3,5 @@ uvicorn
 sympy
 requests
 pytest
+sqlalchemy
+mysql-connector-python
