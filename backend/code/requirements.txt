@@ -6,3 +6,4 @@ pytest
 sqlalchemy
 mysql-connector-python
 mysqlclient
+python-dotenv
