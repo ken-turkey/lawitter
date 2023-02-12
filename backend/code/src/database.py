@@ -41,6 +41,7 @@ class User(Base):
 class WakeUpTime(Base):
     __tablename__ = 'wake_up_time'
     id = Column('id', Integer, primary_key = True)
+    user_id = Column('user_id', Integer)
     date = Column('date', String(200))
     wake_up_time = Column('wake_up_time', String(200))
     late_text = Column('late_text', String(200))
@@ -48,16 +49,16 @@ class WakeUpTime(Base):
 class Slack(Base):
     __tablename__ = 'slack'
     id = Column('id', Integer, primary_key = True)
-    name = Column('user_id', Integer)
-    name = Column('token', String(200))
-    password = Column('channel', String(200))
+    user_id = Column('user_id', Integer)
+    token = Column('token', String(200))
+    channel = Column('channel', String(200))
 
 class IsWakeUp(Base):
     __tablename__ = 'is_wake_up'
     id = Column('id', Integer, primary_key = True)
-    name = Column('user_id', Integer)
-    name = Column('date', String(200))
-    password = Column('is_wake_up',Boolean , default=False)
+    user_id = Column('user_id', Integer)
+    date = Column('date', String(200))
+    is_wake_up = Column('is_wake_up',Boolean , default=False)
 
 # テーブル作成
 Base.metadata.create_all(bind=engine)

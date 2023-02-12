@@ -220,12 +220,12 @@ home-->wake_up
 home-->slack
 ```
 
-## スタブサーバー起動方法
+## サーバー起動方法
 
 デフォルトでは立ち上がっていないため、中に入ってから
 ```sh
 cd /code/src
-uvicorn main:app --reload --host 0.0.0.0 --port 8081
+uvicorn api:app --reload --host 0.0.0.0 --port 8081
 ```
 
 ## データベース
