@@ -53,12 +53,14 @@ class Slack(Base):
     token = Column('token', String(200))
     channel = Column('channel', String(200))
 
+
 class IsWakeUp(Base):
     __tablename__ = 'is_wake_up'
     id = Column('id', Integer, primary_key = True)
     user_id = Column('user_id', Integer)
     date = Column('date', String(200))
     is_wake_up = Column('is_wake_up',Boolean , default=False)
+
 
 # テーブル作成
 Base.metadata.create_all(bind=engine)
